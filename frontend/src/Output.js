@@ -9,14 +9,15 @@ const Output = (props) => {
   };
 
   const getResult = async () => {
-    const keyword1 = "canada";
-    const keyword2 = "canada";
-    const keyword3 = "canada";
-    const keyword4 = "canada";
-    const keyword5 = "canada";
+    const keyword1 = "america";
+    const keyword2 = "trudeau";
+    const keyword3 = "pierre";
+    const keyword4 = "anita";
+    const keyword5 = "sdgfsadfsad";
+
 
     const response = await fetch(
-      `https://c73c-2620-101-f000-704-00-15e.ngrok.io/main?args=${keyword1} ${keyword2} ${keyword3} ${keyword4} ${keyword5}`,
+      `http://localhost:5000/main?args=${keyword1} ${keyword2} ${keyword3} ${keyword4} ${keyword5}`,
       {
         headers: {
           "Access-Control-Allow-Origin": true,
@@ -65,9 +66,9 @@ const Output = (props) => {
       {articles.map((article) => {
         return (
           <div className="organizers">
-            <h1>Url, {article.URL}</h1>
-            <p>Formalness, {article.properties.formal}</p>
-            <h2>Word Count, {article.properties.word_count}</h2>
+            //<h1>Url, {article.URL}</h1>
+            //<p>Formalness, {article.properties.formal}</p>
+            //<h2>Word Count, {article.properties.word_count}</h2>
           </div>
         );
       })}

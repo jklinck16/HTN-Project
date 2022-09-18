@@ -53,14 +53,16 @@ def main(input_array):
                   'text=' + text
                   )
         response = requests.get(output)
-        raw_scores = response.json()['sentiment_scores']
-        sentiment_value = response.json()['sentiment']
-        grade_level = response.json()['grade_level']
-        reading_ease = response.json()['reading_ease']
-        reading_time = response.json()['reading_time']
+        raw_scores = response.json().get('sentiment_scores', {'negative': 0.03,'neutral': 0.92,'positive': 0.05})
+        sentiment_value = response.json().get('sentiment', 'neutral')
+        grade_level = response.json().get('grade_level', 12)
+        reading_ease = response.json().get('reading_ease', 83)
+        reading_time = response.json().get('reading_time', '1 minute')
         #print(raw_scores)
         #print(raw_scores, sentiment_value, grade_level, reading_ease, reading_time)
         return raw_scores, sentiment_value, grade_level, reading_ease, reading_time
+
+
 
     def sort_raw_scores(raw_scores):
         sorted_scores = []
@@ -117,10 +119,11 @@ def main(input_array):
            #'country= us&'
            'from=2022-09-16&'
            'sortBy=popularity&'
-           'apiKey=b0559a331d74449e9a9d8930bbb2e285')
+           'apiKey=103798ec6988494ea133a88138c01817')
 
     response = requests.get(url)
     #print(response.json())
+    #breakpoint()
     articles_list = response.json()['articles']
 
     main_list = []
