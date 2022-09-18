@@ -53,7 +53,7 @@ def main(input_array):
                   'text=' + text
                   )
         response = requests.get(output)
-        raw_scores = response.json().get('sentiment_scores', {'negative': 0.03,'neutral': 0.92,'positive': 0.05})
+        raw_scores = response.json().get('sentiment_scores')
         sentiment_value = response.json().get('sentiment')
         grade_level = response.json().get('grade_level')
         reading_ease = response.json().get('reading_ease')
