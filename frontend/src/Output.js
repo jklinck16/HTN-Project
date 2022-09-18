@@ -5,15 +5,47 @@ const Output = (props) => {
   const backPage = props.backPage;
 
   const transformData = (data) => {
-    return data;
+    const finalData = [];
+    for (let i = 0; i < data.length - 8; i += 9) {
+      const a = {};
+
+      a.url = data[i];
+      a.properties.author = data[i + 1];
+      a.properties.description = data[i + 2];
+      a.properties.word_count = data[i + 3];
+      a.properties.sentiment_value = data[i + 4];
+      a.properties.grade_level = data[i + 5];
+      a.properties.reading_ease = data[i + 6];
+      a.properties.reading_time = data[i + 7];
+      a.properties.relative_sentiment_value = data[i + 8];
+      finalData.push(a);
+      return finalData;
+    }
+    const b = { URL: data[0] };
+    finalData.push(b);
+
+    for (let i = 1; i < data.length - 8; i++) {
+      const a = {};
+      a["properties"] = data[i];
+      a["properties"] = data[i + 1];
+      a["properties"] = data[i + 2];
+      a["properties"] = data[i + 3];
+      a["properties"] = data[i + 4];
+      a["properties"] = data[i + 5];
+      a["properties"] = data[i + 6];
+      a["properties"] = data[i + 7];
+      a["properties"] = data[i + 8];
+      b.push(a);
+    }
+    return finalData;
   };
 
   const getResult = async () => {
     const keyword1 = "canada";
-    const keyword2 = "canada";
-    const keyword3 = "canada";
-    const keyword4 = "canada";
-    const keyword5 = "canada";
+    const keyword2 = "english";
+    const keyword3 = "war";
+    const keyword4 = "weapons";
+    const keyword5 = "fight";
 
     const response = await fetch(
       `https://c73c-2620-101-f000-704-00-15e.ngrok.io/main?args=${keyword1} ${keyword2} ${keyword3} ${keyword4} ${keyword5}`,
@@ -29,6 +61,7 @@ const Output = (props) => {
     console.log("data", data);
 
     const transformedData = transformData(data);
+    console.log("transformed data is", data);
 
     return transformedData;
 
@@ -65,9 +98,9 @@ const Output = (props) => {
       {articles.map((article) => {
         return (
           <div className="organizers">
-            <h1>Url, {article.URL}</h1>
-            <p>Formalness, {article.properties.formal}</p>
-            <h2>Word Count, {article.properties.word_count}</h2>
+            <h1>Url, {article[0]}</h1>
+            <p>Formalness, {article[1]}</p>
+            <h2>Word Count, {article[2]}</h2> */
           </div>
         );
       })}
