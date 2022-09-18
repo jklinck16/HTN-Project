@@ -98,9 +98,16 @@ const Output = (props) => {
       {articles.map((article) => {
         return (
           <div className="organizers">
-            <h1>Url, {article[0]}</h1>
-            <p>Formalness, {article[1]}</p>
-            <h2>Word Count, {article[2]}</h2> */
+            <h1>Url, {article.url}</h1>
+            <p>Formalness, {article.properties.URL}</p>
+            <p>Word Count, {article.properties.author}</p>
+            <p>Word Count, {article.properties.description}</p>
+            <p>Word Count, {article.properties.word_count}</p>
+            <p>Word Count, {article.properties.sentiment_value}</p>
+            <p>Word Count, {article.properties.grade_level}</p>
+            <p>Word Count, {article.properties.reading_ease}</p>
+            <p>Word Count, {article.properties.reading_time}</p>
+            <p>Word Count, {article.properties.relative_sentiment_value}</p>
           </div>
         );
       })}
