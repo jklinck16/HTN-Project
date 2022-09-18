@@ -6,47 +6,32 @@ const Output = (props) => {
 
   const transformData = (data) => {
     const finalData = [];
+    console.log("the data before transformation is", data);
     for (let i = 0; i < data.length - 8; i += 9) {
       const a = {};
-
+      const properties = {};
       a.url = data[i];
-      a.properties.author = data[i + 1];
-      a.properties.description = data[i + 2];
-      a.properties.word_count = data[i + 3];
-      a.properties.sentiment_value = data[i + 4];
-      a.properties.grade_level = data[i + 5];
-      a.properties.reading_ease = data[i + 6];
-      a.properties.reading_time = data[i + 7];
-      a.properties.relative_sentiment_value = data[i + 8];
+      properties.author = data[i + 1];
+      properties.description = data[i + 2];
+      properties.word_count = data[i + 3];
+      properties.sentiment_value = data[i + 4];
+      properties.grade_level = data[i + 5];
+      properties.reading_ease = data[i + 6];
+      properties.reading_time = data[i + 7];
+      properties.relative_sentiment_value = data[i + 8];
+      a.properties = properties;
       finalData.push(a);
-      return finalData;
     }
-    const b = { URL: data[0] };
-    finalData.push(b);
-
-    for (let i = 1; i < data.length - 8; i++) {
-      const a = {};
-      a["properties"] = data[i];
-      a["properties"] = data[i + 1];
-      a["properties"] = data[i + 2];
-      a["properties"] = data[i + 3];
-      a["properties"] = data[i + 4];
-      a["properties"] = data[i + 5];
-      a["properties"] = data[i + 6];
-      a["properties"] = data[i + 7];
-      a["properties"] = data[i + 8];
-      b.push(a);
-    }
+    console.log("final data from this message is", finalData);
     return finalData;
   };
 
   const getResult = async () => {
-    const keyword1 = "america";
-    const keyword2 = "trudeau";
-    const keyword3 = "pierre";
-    const keyword4 = "anita";
-    const keyword5 = "sdgfsadfsad";
-
+    const keyword1 = "gun";
+    const keyword2 = "weapon";
+    const keyword3 = "murder";
+    const keyword4 = "kidnapping";
+    const keyword5 = "killing";
 
     const response = await fetch(
       `http://localhost:5000/main?args=${keyword1} ${keyword2} ${keyword3} ${keyword4} ${keyword5}`,
@@ -57,7 +42,7 @@ const Output = (props) => {
       }
     );
 
-    const data = response.json();
+    const data = await response.json();
 
     console.log("data", data);
 
@@ -98,10 +83,18 @@ const Output = (props) => {
       </h1>
       {articles.map((article) => {
         return (
-          <div className="organizers">
-            <h1>Url, {article[0]}</h1>
-            <p>Formalness, {article[1]}</p>
-            <h2>Word Count, {article[2]}</h2> */
+
+          <div className="organizers" key={article.URL}>
+
+            <h1>Url, {article.url}</h1>
+            <p>Author, {article.properties.author}</p>
+            <p>Description, {article.properties.description}</p>
+            <p>Word Count, {article.properties.word_count}</p>
+            <p>Sentiment Value, {article.properties.sentiment_value}</p>
+            <p>Grade Level, {article.properties.grade_level}</p>
+            <p>Reading Ease, {article.properties.reading_ease}</p>
+            <p>Reading Time, {article.properties.reading_time}</p>
+            <p>Relative sentiment value, {article.properties.relative_sentiment_value}</p>
           </div>
         );
       })}
