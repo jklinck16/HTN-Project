@@ -37,7 +37,7 @@ const Homepage = (props) => {
             descions based on our information, we believe they will be more
             likely to think for themselves and generate valid opinions.
           </p>
-          <img className="logo" src={logo}></img>
+          <img className="logo" src={logo} alt=""></img>
           <p className="authors">By: Jeffrey, Geoffrey, Ken, Kristian</p>
         </div>
       </div>
@@ -48,13 +48,13 @@ const Homepage = (props) => {
               Environmental Issues
             </button>
             <button className="login-button" onClick={nextPage}>
-              Healthcare
+              Gun Violence
             </button>
             <button className="login-button" onClick={nextPage}>
               Canadian Politics
             </button>
             <button className="login-button" onClick={nextPage}>
-              Education
+              Education Issues
             </button>
             <button className="login-button" onClick={nextPage}>
               Economic Equality

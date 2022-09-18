@@ -86,19 +86,15 @@ const Output = (props) => {
 
           <div className="organizers" key={article.URL}>
 
-            <h1>Url, {article.url}</h1>
-            <p>Author, {article.properties.author}</p>
-            <p>Description, {article.properties.description}</p>
-            <p>Word Count, {article.properties.word_count}</p>
-            <p>Sentiment Value, {article.properties.sentiment_value}</p>
-            <p>Grade Level, {article.properties.grade_level}</p>
-            <p>Reading Ease, {article.properties.reading_ease}</p>
-            <p>Reading Time, {article.properties.reading_time}</p>
-            <p>Relative sentiment value, {article.properties.relative_sentiment_value}</p>
+            <h1 className="url"> Url, {article.url}</h1>
+            <p className="stats">Author, {article.properties.author}</p>
+            <p className="stats">Description, {article.properties.description}</p>
+            <p className="stats">Word Count, {article.properties.word_count}. Sentiment Value, {article.properties.sentiment_value}</p>
+            <p className="stats">Grade Level, {Math.round(article.properties.grade_level)}. Reading Ease, {article.properties.reading_ease}</p>
+            <p className="stats">Reading Time, {article.properties.reading_time}. Relative sentiment value (lower value ~> more negative), {article.properties.relative_sentiment_value}</p>
           </div>
         );
       })}
-      <div className="organizers"></div>
     </div>
   );
 };

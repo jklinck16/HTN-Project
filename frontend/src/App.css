@@ -220,11 +220,11 @@ li:nth-child(10) {
 }
 
 .organizers {
-  margin-top: 50px;
+  margin-top: 20px;
   align-content: center;
   margin-left: 10%;
   width: 80%;
-  height: 200px;
+  height: 180px;
   background-color: rgb(141, 136, 136);
   border: 1px solid black;
 }
@@ -248,4 +248,13 @@ li:nth-child(10) {
 .buttonBack:hover {
   color: black;
   border: 1px solid green;
+}
+
+.stats {
+  color: black;
+  font-size: 11px;
+}
+
+.url {
+  font-size: 15px;
 }
