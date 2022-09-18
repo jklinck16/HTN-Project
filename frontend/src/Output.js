@@ -41,20 +41,12 @@ const Output = (props) => {
   };
 
   const getResult = async () => {
-<<<<<<< HEAD
     const keyword1 = "america";
     const keyword2 = "trudeau";
     const keyword3 = "pierre";
     const keyword4 = "anita";
     const keyword5 = "sdgfsadfsad";
 
-=======
-    const keyword1 = "canada";
-    const keyword2 = "english";
-    const keyword3 = "war";
-    const keyword4 = "weapons";
-    const keyword5 = "fight";
->>>>>>> 14569069126d3d7d25850c3150abca837c9b5571
 
     const response = await fetch(
       `http://localhost:5000/main?args=${keyword1} ${keyword2} ${keyword3} ${keyword4} ${keyword5}`,
@@ -107,15 +99,9 @@ const Output = (props) => {
       {articles.map((article) => {
         return (
           <div className="organizers">
-<<<<<<< HEAD
-            //<h1>Url, {article.URL}</h1>
-            //<p>Formalness, {article.properties.formal}</p>
-            //<h2>Word Count, {article.properties.word_count}</h2>
-=======
             <h1>Url, {article[0]}</h1>
             <p>Formalness, {article[1]}</p>
             <h2>Word Count, {article[2]}</h2> */
->>>>>>> 14569069126d3d7d25850c3150abca837c9b5571
           </div>
         );
       })}
